@@ -39,6 +39,7 @@
 
     .menuButton{
         display: block;
+        cursor: pointer;
     }
     
 
