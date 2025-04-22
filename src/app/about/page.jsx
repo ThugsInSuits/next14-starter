@@ -3,9 +3,22 @@ import styles from "./about.module.css";
 
 const AboutPage = () => {
   return (
-    <div>
-      <div className={styles.imgContainer} >
-        <Image src="https://images.pexels.com/photos/31023837/pexels-photo-31023837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" fill/>
+    <div className={styles.container}>
+      <div className={styles.textContainer}>
+        <h2>About Agency</h2>
+        <h2>We create digital ideas that are bigger, bolder, braver and better.</h2>
+        <p>
+        We create digital ideas that are bigger, bolder, braver and better. We believe in good ideas flexibility and precission We’re world’s Our Special Team best consulting & finance solution provider. Wide range of web and software development services.
+        </p>
+      </div>
+      <div className={styles.boxes}>
+        <div className={styles.box}>
+          <h1>10 K++</h1>
+          <p>Year of experience</p>
+        </div>
+      </div>
+      <div className={styles.imgContainer}>
+        
       </div>
     </div>
   )
