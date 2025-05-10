@@ -63,4 +63,10 @@ a{
     .container {
         width: 475px;
     }
-}
+} 
+
+@media (max-width: 475px) {
+    .container {
+        width: 380px;
+    }
+} 

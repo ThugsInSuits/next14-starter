@@ -1,7 +1,18 @@
 import Image from "next/image";
 import styles from "./singlePostPage.module.css"
 
-const SinglePostPage = () => {
+const getData = async(slug)=>{
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`)
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+
+  return res.json()
+}
+
+const SinglePostPage = async ({params}) => {
+  const {slug} = params;
+  const post = await getData(slug)
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
@@ -13,7 +24,7 @@ const SinglePostPage = () => {
       </div>
 
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Title</h1>
+        <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
           <Image src="https://images.pexels.com/photos/16747471/pexels-photo-16747471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             className={styles.avatar}
@@ -32,7 +43,7 @@ const SinglePostPage = () => {
           </div>
         </div>
         <div className={styles.context}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores laboriosam eaque dolorum! Adipisci sunt ipsam eaque accusantium doloremque reprehenderit culpa est praesentium deleniti dolores vel quae sequi odio rem soluta, nihil laboriosam quis quisquam? Suscipit soluta beatae officia, nemo minus iste earum ratione quae praesentium atque amet dolorum quos laudantium? Sunt natus atque, sit dolorum minima consequuntur perspiciatis. Praesentium tempora consequuntur, animi voluptas commodi sunt porro reiciendis quibusdam impedit minus exercitationem ea delectus, sed corporis culpa nostrum rerum eos magnam eaque omnis beatae maxime enim odit! Omnis optio dolores hic alias neque ut corrupti magnam animi, sit eaque quia quisquam.
+          {post.body}
         </div>
       </div>
 
