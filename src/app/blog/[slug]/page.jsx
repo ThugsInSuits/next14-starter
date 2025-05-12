@@ -1,18 +1,20 @@
 import Image from "next/image";
 import styles from "./singlePostPage.module.css"
+import UserPost from "@/components/postUser/postUser";
+import { getPost } from "@/lib/data";
+// Fetch data with an api
+// const getData = async(slug)=>{
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`)
+//   if (!res.ok) {
+//     throw new Error("Something went wrong");
+//   }
 
-const getData = async(slug)=>{
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`)
-  if (!res.ok) {
-    throw new Error("Something went wrong");
-  }
-
-  return res.json()
-}
+//   return res.json()
+// }
 
 const SinglePostPage = async ({params}) => {
   const {slug} = params;
-  const post = await getData(slug)
+  const post = await getPost(slug)
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
@@ -32,11 +34,7 @@ const SinglePostPage = async ({params}) => {
             width={50}
             height={50}
           />
-          <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Author</span>
-            <span className={styles.detailValue}>Terry Jeffy</span>
-          </div>
-
+          <UserPost userId={post.userId}/>
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>01.01.2025</span>
